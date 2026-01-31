@@ -35,4 +35,4 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
   ssh-add ~/.ssh/id_ed25519 2>/dev/null
 fi
 
-alias hyprland='dbus-launch --exit-with-session Hyprland'
+alias Hyprland='dbus-launch --exit-with-session Hyprland'
