@@ -30,3 +30,9 @@ fi
 
 export PATH="/home/cameron/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$PATH"
 alias obsidian="obsidian --enable-features=UseOzonePlatform --ozone-platform=wayland"
+if [ -z "$SSH_AUTH_SOCK" ]; then
+  eval "$(ssh-agent -s)" > /dev/null
+  ssh-add ~/.ssh/id_ed25519 2>/dev/null
+fi
+
+alias Hyprland='dbus-launch --exit-with-session Hyprland'

@@ -1,0 +1,38 @@
+return {
+  cmd = { "gopls" },
+  filetypes = { "go", "gomod", "gowork", "gotmpl" },
+  root_markers = { "go.work", "go.mod", ".git" },
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+        unusedwrite = true,
+        useany = true,
+        unusedvariable = true,
+        shadow = true,
+        nilness = true,
+        unusedresult = true,
+        deepequalerrors = true,
+        sortslice = true,
+        testinggoroutine = true,
+        undeclaredname = true,
+        fillreturns = true,
+        nonewvars = true,
+        noresultvalues = true,
+        stubmethods = true,
+      },
+      staticcheck = true,
+      gofumpt = true,
+      vulncheck = "Imports",
+      hints = {
+        assignVariableTypes = true,
+        compositeLiteralFields = true,
+        compositeLiteralTypes = true,
+        constantValues = true,
+        functionTypeParameters = true,
+        parameterNames = true,
+        rangeVariableTypes = true,
+      },
+    },
+  },
+}
