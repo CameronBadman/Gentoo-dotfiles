@@ -8,6 +8,7 @@
     "margin-right": 6,
     
     "modules-left": [
+        "custom/recorder",
         "hyprland/workspaces",
         "clock"
     ],
@@ -149,6 +150,14 @@
         },
         "on-click": "pavucontrol",
         "scroll-step": 5.0
+    },
+
+    "custom/recorder": {
+        "format": "{}",
+        "interval": 1,
+        "exec": "~/.config/waybar/recorder.sh status",
+        "return-type": "json",
+        "on-click": "~/.config/waybar/recorder.sh toggle"
     },
 
     "tray": {

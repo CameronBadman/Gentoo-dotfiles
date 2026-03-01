@@ -21,6 +21,7 @@ window#waybar {
 #battery,
 #memory,
 #pulseaudio,
+#custom-recorder,
 #tray {
     background: rgba(31, 31, 40, 0.9);
     padding: 0 8px;
@@ -145,6 +146,17 @@ window#waybar {
 
 #pulseaudio.muted {
     color: #727169;
+}
+
+#custom-recorder {
+    color: #957fb8;
+    padding: 0 10px;
+    margin: 0 4px;
+}
+
+#custom-recorder.recording {
+    color: #ff5d62;
+    animation: blink 1s ease-in-out infinite;
 }
 
 #tray {

@@ -36,3 +36,6 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
 fi
 
 alias Hyprland='dbus-launch --exit-with-session Hyprland'
+export DRI_PRIME=0
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$PATH:$HOME/.dotnet/tools"
