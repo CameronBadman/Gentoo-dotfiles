@@ -8,6 +8,7 @@
     "margin-right": 6,
     
     "modules-left": [
+        "custom/screenshot",
         "custom/recorder",
         "hyprland/workspaces",
         "clock"
@@ -151,6 +152,14 @@
         },
         "on-click": "pavucontrol",
         "scroll-step": 5.0
+    },
+
+    "custom/screenshot": {
+        "format": "{}",
+        "interval": 3600,
+        "exec": "~/.config/waybar/screenshot.sh status",
+        "return-type": "json",
+        "on-click": "~/.config/waybar/screenshot.sh capture"
     },
 
     "custom/recorder": {
