@@ -9,7 +9,7 @@ return {
     config = function()
       require("mason").setup()
       require("mason-lspconfig").setup({
-        ensure_installed = { "gopls", "golangci_lint_ls" },
+        ensure_installed = { "gopls", "golangci_lint_ls", "pylsp", "ruff" },
       })
 
       vim.diagnostic.config({
