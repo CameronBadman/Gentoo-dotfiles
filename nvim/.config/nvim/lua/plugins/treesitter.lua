@@ -1,7 +1,7 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   build = function()
-    require("nvim-treesitter").install({ "lua", "vim", "vimdoc", "query", "go" })
+    require("nvim-treesitter").install({ "lua", "vim", "vimdoc", "query", "go", "c", "cpp" })
   end,
   config = function()
     vim.api.nvim_create_autocmd("FileType", {

@@ -8,23 +8,27 @@
     "margin-right": 6,
     
     "modules-left": [
+        "custom/screenshot",
+        "custom/recorder",
         "hyprland/workspaces",
         "clock"
     ],
     
     "modules-center": [
-        "wireplumber"
+        "custom/spotify"
     ],
     
     "modules-right": [
         "hyprland/window",
+        "custom/vpn",
         "bluetooth",
         "network",
         "cpu",
         "temperature",
         "battery",
         "memory",
-        "pulseaudio",
+        "custom/updates",
+        "wireplumber",
         "tray"
     ],
 
@@ -71,8 +75,25 @@
         "format": "{icon} {volume}%",
         "format-muted": "󰖁 muted",
         "format-icons": ["󰕿", "󰖀", "󰕾"],
-        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-        "scroll-step": 5.0
+        "tooltip-format": "{node_name}",
+        "on-click": "pavucontrol",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click-middle": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 50%",
+        "scroll-step": 5.0,
+        "max-volume": 120
+    },
+
+    "custom/spotify": {
+        "format": "{}",
+        "interval": 1,
+        "exec": "~/.config/waybar/spotify.sh status",
+        "return-type": "json",
+        "on-click": "~/.config/waybar/spotify.sh play-pause",
+        "on-click-middle": "~/.config/waybar/spotify.sh cover",
+        "on-click-right": "~/.config/waybar/spotify.sh next",
+        "on-scroll-up": "~/.config/waybar/spotify.sh next",
+        "on-scroll-down": "~/.config/waybar/spotify.sh previous",
+        "max-length": 72
     },
 
     "hyprland/window": {
@@ -89,7 +110,17 @@
         "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
         "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-        "on-click": "blueman-manager"
+        "on-click": "blueman-manager",
+        "on-click-right": "blueman-manager"
+    },
+
+    "custom/vpn": {
+        "format": "{}",
+        "interval": 5,
+        "exec": "~/.config/waybar/vpn.sh status",
+        "return-type": "json",
+        "on-click": "~/.config/waybar/vpn.sh toggle",
+        "on-click-right": "~/.config/waybar/vpn.sh manager"
     },
 
     "network": {
@@ -108,6 +139,7 @@
     },
 
     "temperature": {
+        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 80,
         "format": "{icon} {temperatureC}°C",
         "format-icons": ["󱃃", "󰔏", "󱃂", "󰸁", "󰸁"],
@@ -135,20 +167,29 @@
         "tooltip-format": "RAM: {used:0.1f}G / {total:0.1f}G\nSwap: {swapUsed:0.1f}G / {swapTotal:0.1f}G"
     },
 
-    "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-muted": "󰖁 muted",
-        "format-icons": {
-            "headphone": "󰋋",
-            "hands-free": "󰋎",
-            "headset": "󰋎",
-            "phone": "󰄜",
-            "portable": "󰄜",
-            "car": "󰄋",
-            "default": ["󰕿", "󰖀", "󰕾"]
-        },
-        "on-click": "pavucontrol",
-        "scroll-step": 5.0
+    "custom/updates": {
+        "format": "{}",
+        "interval": 1800,
+        "exec": "~/.config/waybar/updates.sh status",
+        "return-type": "json",
+        "on-click": "~/.config/waybar/updates.sh refresh",
+        "on-click-right": "~/.config/waybar/updates.sh upgrade"
+    },
+
+    "custom/screenshot": {
+        "format": "{}",
+        "interval": 3600,
+        "exec": "~/.config/waybar/screenshot.sh status",
+        "return-type": "json",
+        "on-click": "~/.config/waybar/screenshot.sh capture"
+    },
+
+    "custom/recorder": {
+        "format": "{}",
+        "interval": 1,
+        "exec": "~/.config/waybar/recorder.sh status",
+        "return-type": "json",
+        "on-click": "~/.config/waybar/recorder.sh toggle"
     },
 
     "tray": {
