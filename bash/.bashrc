@@ -41,3 +41,11 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$PATH:$HOME/.dotnet/tools"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.npm-global/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/cameron/hackathon-agent/google-cloud-sdk/path.bash.inc' ]; then . '/home/cameron/hackathon-agent/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/cameron/hackathon-agent/google-cloud-sdk/completion.bash.inc' ]; then . '/home/cameron/hackathon-agent/google-cloud-sdk/completion.bash.inc'; fi
+
+. "$HOME/.local/bin/env"
