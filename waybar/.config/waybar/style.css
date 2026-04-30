@@ -13,14 +13,16 @@ window#waybar {
 #workspaces,
 #clock,
 #wireplumber,
+#custom-spotify,
 #window,
+#custom-vpn,
 #bluetooth,
 #network,
 #cpu,
 #temperature,
 #battery,
 #memory,
-#pulseaudio,
+#custom-updates,
 #custom-screenshot,
 #custom-recorder,
 #tray {
@@ -71,6 +73,44 @@ window#waybar {
     color: #727169;
 }
 
+#custom-spotify {
+    color: #b5d99c;
+    min-width: 170px;
+    padding: 0 12px;
+    border: 1px solid rgba(152, 187, 108, 0.24);
+    background: rgba(26, 34, 30, 0.92);
+    transition: all 0.25s ease;
+}
+
+#custom-spotify.playing {
+    color: #d8f3c9;
+    border-color: rgba(152, 187, 108, 0.46);
+    background: rgba(29, 48, 36, 0.95);
+    box-shadow: inset 0 -2px rgba(152, 187, 108, 0.75), 0 0 10px rgba(152, 187, 108, 0.12);
+    animation: spotify-pulse 2.8s ease-in-out infinite;
+}
+
+#custom-spotify.paused {
+    color: #e6c384;
+    border-color: rgba(230, 195, 132, 0.34);
+    background: rgba(49, 43, 31, 0.94);
+    box-shadow: inset 0 -2px rgba(230, 195, 132, 0.62);
+}
+
+#custom-spotify.stopped,
+#custom-spotify.missing {
+    color: #727169;
+    min-width: 0;
+    border-color: rgba(114, 113, 105, 0.16);
+    box-shadow: none;
+    animation: none;
+}
+
+#custom-spotify:hover {
+    background: rgba(46, 61, 49, 0.98);
+    color: #dcd7ba;
+}
+
 #window {
     color: #c0a36e;
     font-weight: 600;
@@ -81,6 +121,20 @@ window#waybar {
 }
 
 #bluetooth.disconnected {
+    color: #727169;
+}
+
+#custom-vpn.connected {
+    color: #98bb6c;
+    box-shadow: inset 0 -2px rgba(152, 187, 108, 0.65);
+}
+
+#custom-vpn.disconnected {
+    color: #ff5d62;
+}
+
+#custom-vpn.error,
+#custom-vpn.missing {
     color: #727169;
 }
 
@@ -141,12 +195,27 @@ window#waybar {
     color: #ff5d62;
 }
 
-#pulseaudio {
-    color: #d27e99;
+#custom-updates {
+    color: #7e9cd8;
 }
 
-#pulseaudio.muted {
-    color: #727169;
+#custom-updates.pending {
+    color: #e6c384;
+    box-shadow: inset 0 -2px rgba(230, 195, 132, 0.7);
+}
+
+#custom-updates.updated {
+    color: #98bb6c;
+}
+
+#custom-updates.checking {
+    color: #7fb4ca;
+    animation: blink 1.4s ease-in-out infinite;
+}
+
+#custom-updates.error,
+#custom-updates.missing {
+    color: #ff5d62;
 }
 
 #custom-screenshot {
@@ -199,5 +268,17 @@ tooltip label {
     }
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes spotify-pulse {
+    0% {
+        box-shadow: inset 0 -2px rgba(152, 187, 108, 0.45);
+    }
+    50% {
+        box-shadow: inset 0 -2px rgba(152, 187, 108, 0.95);
+    }
+    100% {
+        box-shadow: inset 0 -2px rgba(152, 187, 108, 0.45);
     }
 }
